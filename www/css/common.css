@@ -1,0 +1,169 @@
+body{
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+#home_page::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.bg-theme{
+    background: rgb(0, 148, 76);
+}
+
+.ui.raised.segment.bg-theme{
+    background: rgb(0, 148, 76);
+}
+
+.ui.raised.segment.flat{
+    border-radius: 0;
+}
+.text-theme{
+    color: rgb(0, 148, 76);
+}
+
+.flat{
+    border-radius: 0;
+}
+
+.header-button{
+    color:white;
+    font-size: 20px;
+}
+
+#title{
+    font-weight: bold;
+    font-family: 'Yu Gothic';
+    font-size: 17px;
+}
+#footer{
+    background-color: rgb(0, 148, 76);
+}
+#footer div p{
+    font-size: 17px;
+    color:white;
+}
+.views{
+    padding-top:5%;
+    height: 100%;
+}
+
+#xet{
+    font-family: impact;
+    margin: 0;
+    color: red
+}
+
+#display_name{
+    margin: 0;
+    font-family: 'calisto';
+    font-size: 30px;
+}
+
+.views{
+    display: none;
+}
+
+#logo{
+    width:100px;
+    height: 100px;
+    border-radius: 50px;
+    border: thick solid black;
+    margin: auto;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    padding-top:.4em;
+    font-size: 45px;
+}
+#forgot_password{
+    text-decoration: none;
+    font-family: 'nuni-reg';
+    font-size: 19px;
+}
+
+#password,#verification_code{
+    font-size: 20px;
+    text-align: center;
+    font-family: 'nuni-reg';
+    border-radius: 0;
+    font-weight: lighter;
+}
+
+#welcome_text{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#phone_number{
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#staging{
+    width:100%;
+    background: rgba(0,0,0,.5);
+    color:white;
+    padding:.4em;
+    margin-top:0;
+    text-align: center;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.stepped_form{
+    display: none;
+}
+
+#capture_text{
+    text-align: center;
+    font-family: pacific;
+    text-decoration: underline;
+}
+
+#tip_text{
+    font-family: nuni-reg;
+}
+
+.col-12 .stage{
+    widows: 4px;
+    height:40px;
+    border:2px solid forestgreen;
+    padding:.3em;
+    display:inline-block;
+    margin:auto;
+    border-radius:35px/35px;
+}
+
+.form-group .f_label{
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#tally_sheet_image{
+    min-height:25vh;
+    width:100%;
+    position: relative;
+    margin-top:0;
+    border:2px solid forestgreen;
+}
+
+#errors_list li{
+    font-family: Arial, Helvetica, sans-serif;
+    color:red;
+    font-weight: bold;
+    margin-bottom:1.4em;
+}
+
+.form-control{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}

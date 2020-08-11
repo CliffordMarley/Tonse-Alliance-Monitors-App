@@ -1,0 +1,588 @@
+f<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+      @-ms-viewport { width: 100vw ; zoom: 100% ; }  @viewport { width: 100vw ; zoom: 100% ; }
+      @-ms-viewport { user-zoom: fixed ; }           @viewport { user-zoom: fixed ; }
+    </style>
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!-- <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover"> -->
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" href="lib/sweetalerts/sweetalert.css">
+    <link rel="stylesheet" href="css/material-forms.css">
+    <link rel="stylesheet" href="css/common.css">
+    <title>Monitor_App</title>
+  </head>
+  <body class="ui dimmable">
+    <div  class="ui right sidebar vertical menu" style="padding: 0;">
+      <div class="row">
+        <div class="col-12 text-center" style="background-color: rgb(0, 148, 76);padding:.3em;">
+          <h2 style="color: white;font-family: 'Yu Gothic';">Monitor Menu</h2>
+        </div>
+      </div>
+      <a class="item" id="commentBtn">
+      Comment<i class="icon user"></i>
+      </a>
+      <a class="item" id="userGuideBtn">
+      User Guide <i class="icon info circle"></i>
+      </a>
+      <a class="item" id="logoutBtn">
+      Logout <i class="icon logout"></i>
+      </a>
+      <a class="item" id="switchStreamBtn">
+        Switch Streams <i class="icon logout"></i>
+      </a>
+    </div>
+    <div class="pusher container-fluid">
+      <!-- <div class="sixteen wide column" style="margin: 0;"> -->
+      <div class="row">
+        <header class="col-12 ui raised segment flat bg-theme p-3 p-md-4 my-0"
+          style="position: fixed;width: 100%;top:0;left:0;z-index: 10;">
+          <div class="row">
+            <div class="col-10">
+              <label id="title" class="text-white">TonseAlliance</label>
+            </div>
+            <div class="col-2 text-center">
+              <h3 class="text-white" id="sideBarBtn" style="display: none;">
+                <i class="icon bars"></i>
+              </h3>
+            </div>
+          </div>
+        </header>
+        <main id="main_body" class="col-12" style="padding-top:5%;padding-top:10%;margin:0;">
+          <div class="row">
+            <div class="col-12 " id="staging">
+              <p>Getting Started</p>
+            </div>
+            <div class="col-12 views" id="verification_page">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 mt-10 text-center">
+                    <h2 style="font-family: impact;color: rgb(243, 0, 0);">VERIFY ACCOUNT</h2>
+                    <h4 class="mt-3" style="font-family: Arial, Helvetica, sans-serif;">
+                      An SMS verification code that has been sent to <br> ( <span id="phone_display"></span> )
+                    </h4>
+                  </div>
+                  <div class="col-12 my-5">
+                    <div class="form-row">
+                      <div class="col-8 mx-auto">
+                        <input type="text" class="form-control form-control-lg ui raised segment flat" placeholder="Enter Code" type="number" id="verification_code">
+                      </div>
+                      <div class="col-8 text-center mx-auto my-3">
+                        <button id="verifyCodeBtn" class="ui button positive medium circular icon">Verify <i class="icon check"></i></button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 views" id="setup_page">
+              <div class="container">
+                <div class="row">
+                  <div class="col-12 mt-10 text-center ">
+                    <h1 id="welcome_text">TONSE ALLIANCE <br> VOTES CAPTURE APPLICATION</h1>
+                    <div class="ui image massive">
+                      <img src="assets/img/a (1).jpeg" alt="">
+                    </div>
+                    <hr>
+                  </div>
+                  <div class="col-12">
+                    <div class="form-row">
+                      <div class="col-10 mx-auto">
+                        <label style="font-family: Arial, Helvetica, sans-serif;font-size: large;">Phone Number :</label>
+                        <input type="tel" value="+265" id="phone_number" placeholder="+265-###-###-###" class="form-control phone-field form-control-lg ui raised segment flat">
+                      </div>
+                      <div class="col-10 mx-auto text-center my-4">
+                        <button type="button" id="setupAccBtn" style="font-family: 'Yu Gothic';" class="ui button circular icon medium positive">
+                        Setup Account
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 views" id="login_page">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <h1 id="logo"><i class="icon hands helping"></i></h1>
+                    <h1 id="xet">Welcome Back<br></h1>
+                    <h3 id="display_name"></h3>
+                    <hr>
+                  </div>
+                  <div class="col-12 pt-3 text-center">
+                    <form id="login_form">
+                      <div class="form-row">
+                        <div class="col-8 mx-auto">
+                          <input class="form-control form-control-lg ui raised segment" type="password" id="password" placeholder="Password">
+                        </div>
+                        <div class="col-8 my-3 mt-5 mx-auto">
+                          <button type="button" id="loginBtn" class="ui button fluid circular  positive icon tiny">
+                          SIGN IN
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col-12 mt-3 text-center">
+                    <div class="ui horizontal divider">Terms & Conditions Apply</div>
+                    <!-- <a type="button" class="#" id="switchAccountBtn" href="#">Switch Account</a> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 views" id="user_guide_page"  style="overflow-y: scroll;margin-bottom:13%;" >
+              <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      What is this App?
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Tonse Smart Monitor App is a mobile application that is built for the Tonse Alliance electoral monitors' community to allow them to capture station poll data and identify inconsistencies instantly. The data is transmitted to the Alliance's tally center where it can be scrutinised and validated.
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Who Can Use this App?
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <p>
+                        The app is designed to be used only by a pre-selected, pre-authorised and pre-registered Tonse Alliance Monitors, hence does not include a self registration option.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      How to Set up my Account
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <p>Once your phone number has been registered by the Tonse Alliance Team, they will provide you with a login PIN. Install and open thhe application to begin setting up your account, then follow the below steps:</p>
+                      <br>
+                      <ol>
+                        <li>
+                          <p>Enter your registered phone number. ( Do not include 0 (Zero) )</p>
+                        </li>
+                      </ol>
+                      <br>
+                      <p>
+                        Once setup, you will be redirected to a login page where you will have to enter your assigned password to login.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      Capturing Poll Data
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseFour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <p>
+                        Once everything is setup, you can login to the application by entering the PIN which was given to you earlier on. <br><br>
+                        After poll station voting process has concluded, make sure you pay attention and take note of all final agreed upon figures since they are the ones you are going to fill into the application form fields.
+                        <br><br>
+                        Take great care yourself and make sure you input only correct figures into the application's digital tally sheet.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button id="backButton" type="button" class="btn mt-3 btn-lg btn-success btn-block">
+              <i class="icon arrow left"></i> Back to forms
+              </button>
+            </div>
+            <div class="col-12 views" id="comment_page" style="overflow-y: scroll;margin-bottom:13%;" >
+              <h1 class="display-4 text-center">
+                YOUR OBSERVATIONS
+              </h1>
+              <hr>
+              <br>
+              <div class="form-row">
+                <div class="col-12 ui form">
+                  <div class="field fluid">
+                    <textarea name="" id="monitor_observations" placeholder="Write observations here" cols="30" rows="12" class=""></textarea>
+                    <br>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <br>
+                  <button type="button" id="saveObservationButton" class="ui button primary small fluid circular">
+                  Save To Local<i class="icon check"></i>
+                  </button>
+                  <br>
+                </div>
+                <div class="col-12">
+                  <button type="button" id="submitObservation" class="ui button success small fluid circular">
+                  Submit To HQ <i class="icon globe"></i>
+                  </button>
+                  <br>
+                </div>
+                <div class="col-4 mx-auto">
+                  <button type="button" id="BackToHomeBtn" class="ui button primary small fluid circular">
+                  <i class="icon chevron left"></i> Back 
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 views" id="home_page"  style="overflow-y: scroll;margin-bottom:13%;" >
+              <div class="container">
+                <div class="row" id="stream_view" >
+                    <div class="col-12 mt-3 text-center">
+                        <h5 class="display-4 text-primary" style="font-size: 32px;">SELECT STREAM</h5>
+                        <hr>
+                    </div>
+                    <div class="col-12 mt-3">
+                        <div class="row" id="streams_list">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="welcome_view" style="display: none;">
+                  <div class="col-12 mt-3  text-center display-4" style="font-size: 25px;">
+                    (<span style="font-family: impact;color:red;" id="center_name"></span>) <br>
+                    Stream Opening Certification
+                  </div>
+                  <div class="col-12 mt-3 text-center">
+                    <p style="font-size: 17px;">
+                      I <span id="monitor_name"></span>, certify that this polling center is opening now at the below indicated time.
+                    </p>
+                  </div>
+                  <div class="col-12 mt-3">
+                    <div class="form-row">
+                      <div class="col-12 mx-auto">
+                        <hr>
+                      </div>
+                      <div class="col-2"></div>
+                      <div class="col-4 form-group mx-auto">
+                        <label for="">
+                          <h3>Hour :</h3>
+                        </label>
+                        <select class="form-control flat form-control-lg" id="time_hour">
+                        </select>
+                      </div>
+                      <div class="col-4 form-group mx-auto">
+                        <label for="">
+                          <h3>Minute :</h3>
+                        </label>
+                        <select class="form-control flat form-control-lg" id="time_minute">
+                        </select>
+                      </div>
+                      <div class="col-2"></div>
+                      <div class="col-8  mx-auto">
+                        <select id="clock" class="form-control form-control-lg flat">
+                          <option value="am" selected>AM</option>
+                          <option value="pm">PM</option>
+                        </select>
+                      </div>
+                      <div class="col-8 mt-2 mx-auto">
+                        <button type="button" id="captureTimeBtn" class="btn btn-block btn-md btn-outline-success flat">
+                        CAPTURE TIME <i class="icon clock"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" id="votes_view" style="display: none;">
+                  <!-- TAB START -->
+                  <div class="ui top attached tabular menu text-center" style="padding:0;margin:0;">
+                    <a id="fgape" class="item active" data-tab="first">FORM-6A-PE</a>
+                    <a id="fgapf" class="item " data-tab="second">FORM-6A-PF</a>
+                    <a class="item " id="fgapg" data-tab="third">FORM-6A-PG</a>
+                  </div>
+                  <div class="ui bottom attached tab segment active" data-tab="first">
+                    <form class="mt-4" id="part_e_form">
+                      <div class="form-row">
+                        <div class="col-12 text-center mb-3">
+                          <strong><em>NOTE: </em></strong> <span style="color:red;">Fields 1, 1(a) and 2 must be completed at the start of the polling day. Fields 3 & 4 should be completed at the time of receipt or dispatch of ballot papers if applicable. Field 5 must be completed at the end of the polling.</span>
+                          <hr>
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">1). Number of ballot Papers received from CRO:</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="received_ballots_pe" id="received_ballots_pe">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">1(a). Adjustments After your check count( Plus(+) or Minus(-) ):</label>
+                          <input type="number" name="chek_count_adjustments_pe"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" id="chek_count_adjustments_pe">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">2). Actual # of ballot papers received from CRO:</label>
+                          <input type="number"  name="actual_ballots_received_pe" class="form-control form-control-lg flat ui raised segment" placeholder="Required" id="actual_ballots_received_pe">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">3). <strong>PLUS</strong> extra ballot papers received from another center or CRO:</label>
+                          <input type="number"  name="extra_ballots_received_pe" class="form-control form-control-lg flat ui raised segment" placeholder="Required" id="extra_ballots_received_pe">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">4). <strong>LESS</strong> extra papers <strong><em>DISPATCHED</em></strong> to another center or CRO:</label>
+                          <input type="number" name="less_ballots_dispatched_pe"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" id="less_ballots_dispatched_pe">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">5). Total number of Ballot papers to be accounted for:</label>
+                          <input type="number" name="to_be_accounted_for_pe"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" id="to_be_accounted_for_pe">
+                        </div>
+                        <div class="col-12 form-group">
+                          <button id="saveDataButton1" type="button" class="ui right floated button tiny primary icon">
+                          Save Data <i class="icon check"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="ui bottom attached tab segment" data-tab="second">
+                    <form class="" style="padding:.8em;" id="part_f_form">
+                      <div class="form-row mt-4">
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">1). Number Of Registered Voters:</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="registered_voters_pf" id="registered_voters_pf">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">2). Number Of Voters Authorised To Vote Elsewhere:</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="voters_to_vote_elsewhere_pf" id="voters_to_vote_elsewhere_pf">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">3). Number Of Voters Marked On The Certified Voters Register As Voted:</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="certified_voters_register_pf" id="certified_voters_register_pf">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">4). Unused Ballot Papers:</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="unused_ballots_pf" id="unused_ballots_pf">
+                        </div>
+                        <div class="col-12 form-group" id="">
+                          <label class="f_label">5). Spoilt Ballot Papers:</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="spoilt_ballots_pf" id="spoilt_ballots_pf">
+                        </div>
+                        <div class="col-12 form-group" id="">
+                          <label class="f_label">6). Cancelled Ballot Papers:</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name=
+                            "cancelled_ballots_pf" id="cancelled_ballots_pf">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">7). <strong>TOTAL</strong>(Fields 4+5+6):</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="total_1_pf" id="total_1_pf">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">8). Number Of Ballot Papers Counted (Taken from the Ballot box):</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name=
+                            "total_ballots_cast_pf" id="total_ballots_cast_pf">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">9). <strong>TOTAL</strong>(Fields 7+8):</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="total_2_pf" id="total_2_pf">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">10). Ballot papers to be accounted for (From Field 5 on FORM-6A-PE TOTAL):</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="ballots_to_be_accounted_pf" id="ballots_to_be_accounted_pf">
+                        </div>
+                        <div class="col-12  form-group" id="">
+                          <label class="f_label">11). <strong>DIFFERENCE</strong>(Fields 9 minus 10):</label>
+                          <input type="number"  class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="difference_pf" id="difference_pf">
+                        </div>
+                        <div class="col-12 form-group mt-3">
+                          <button id="saveDataButton2" type="button" class="btn btn-block btn-lg btn-primary">Save & Continue</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="ui bottom attached tab segment " data-tab="third">
+                    <!-- CARD START -->
+                    <div class="card mt-4">
+                      <div class="card-header text-white " style="background-color: #F24E03;font-weight: bold;font-family: Arial, Helvetica, sans-serif;">
+                        STEP <span id="step_number">1</span>
+                      </div>
+                      <div class="card-body">
+                        <form class="" id="part_g_form">
+                          <div class="form-row">
+                            <div class="col-12  stepped_form form-group" id="v1">
+                              <h2 class="diving header">CANDIDATE VOTES </h2>
+                              <label class="f_label">a). Chakwera (MCP)</label>
+                              <input  type="number" class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="candidate_one" id="candidate_one">
+                              <label class="f_label">b). Kuwani (MMD)</label>
+                              <input  type="number" class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="candidate_three" id="candidate_three">
+                              <label class="f_label">c). Mutharika (DPP)</label>
+                              <input  type="number" class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="candidate_two" id="candidate_two">
+                              <hr>
+                              <label class="f_label">d). Total Number Of Valid Votes Cast:</label>
+                              <input  type="number" class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="valid_votes_cast_pg" id="valid_votes_cast_pg">
+                              <label class="f_label">e). Null + Void votes:</label>
+                              <input  type="number" class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="null_and_void_votes_pg" id="null_and_void_votes_pg">
+                              <label class="f_label">f). Total Votes Cast:</label>
+                              <input  type="number" class="form-control form-control-lg flat ui raised segment" placeholder="Required" name="total_votes_cast_pg" id="total_votes_cast_pg">
+                            </div>
+                            <div class="col-12 text-center stepped_form form-group" id="v2">
+                              <div class="ui horizontal divider">
+                                CAPTURE TALLY SHEET
+                              </div>
+                              <div class="ui image medium text-center">
+                                <img src="" alt="" class="img img-thumbnail" id="tally_sheet_image">
+                              </div>
+                              <button type="button" id="captureImageBtn" class="btn mt-3 btn-block btn-lg btn-outline-secondary"><i class="icon camera"></i></button>
+                            </div>
+                            <!-- <div id="v3" class="col-12 stepped_form form-group">
+                              <label class="f_label">Analysis (Comment:</label>
+                              <textarea style="font-size: 18px;" class="ui raised segment flat form-control form-control-lg" id="analysis" cols="30" rows="6" placeholder="Write here..."></textarea>
+                              </div> -->
+                            <div class="col-12 stepped_form form-group pt-1" id="v3">
+                              <button type="button" data-toggle="modal" data-target="#errorsModal" id="error_btn" style="color:white;font-weight: bold;" class="btn btn-lg btn-block btn-danger  my-4">VIEW ERROR LOG <i class="icon eye"></i></button>
+                              <button type="button" id="saveBtn" class="btn btn-lg btn-block btn-primary my-4" style="font-weight: bold;color:white;font-family: Arial, Helvetica, sans-serif;">
+                              SAVE CAPTURED<i class="icon save"></i>
+                              </button>
+                              <button type="button" id="transamitBtn" class="btn btn-lg btn-block btn-success" style="font-weight: bold;color:white;font-family: Arial, Helvetica, sans-serif;">
+                              TRANSMIT RESULTS<i class="icon refresh"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                        <div class="text-center">
+                          <!--  <p id="tip_text"><b>TIP :</b> <span style="font-weight: bold;">This is the number of ballots that were allocated and arrived at your polling station.</span></p> -->
+                        </div>
+                      </div>
+                      <div class="card-footer">
+                        <button id="prevStepBtn" style="display:none;" class="ui circular positive float-left tiny button basic icon">
+                        <i class="icon chevron left"></i>Prev
+                        </button>
+                        <button id="nextStepBtn" class="ui circular positive float-right tiny button basic icon">
+                        Next<i class="icon chevron right"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <!-- CARD ENDS -->
+                  </div>
+                  <!-- TAB END -->
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      </main>
+    </div>
+    <!-- </div> -->
+    <button type="button" id="laucnCloseTimeModal"  class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
+    Close Poll Center
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-theme">
+            <h5 class="modal-title text-white" id="exampleModalLabel">Poll Center Closing Time</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-row">
+              <div class="col-12 mx-auto">
+                <hr>
+              </div>
+              <div class="col-2"></div>
+              <div class="col-4 form-group mx-auto">
+                <label for="">
+                  <h3>Hour :</h3>
+                </label>
+                <select class="form-control flat time_hour form-control-lg" id="time_hour2">
+                </select>
+              </div>
+              <div class="col-4 form-group mx-auto">
+                <label for="">
+                  <h3>Minute :</h3>
+                </label>
+                <select class="form-control flat time_minute form-control-lg" id="time_minute2">
+                </select>
+              </div>
+              <div class="col-2"></div>
+              <div class="col-8  mx-auto">
+                <select id="clock2" class="form-control clock form-control-lg flat">
+                  <option value="am" selected>AM</option>
+                  <option value="pm">PM</option>
+                </select>
+              </div>
+              <div class="col-8 mt-5 mx-auto">
+                <button type="button" id="captureTimeBtn2" class="btn btn-block btn-lg btn-secondary flat">
+                CAPTURE TIME <i class="icon clock"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="dimissPCCT" class="btn btn-secondary" data-dismiss="modal">Dismiss</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="col-12 ui bottom attached label p-3 p-md-4" id="footer" style="position: fixed;width:100%;bottom:0;left: 0;">
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 text-center">
+          <p>Electoral Monitoring App</p>
+        </div>
+        <div class="col-2 text-right">
+          <p>v1.0</p>
+        </div>
+      </div>
+    </footer>
+    <div class="ui dimmer" id="loadingDimmer">
+      <div class="ui text loader" id="loadingText">Loading</div>
+    </div>
+    <!-- MODALS -->
+    <div class="modal fade" id="errorsModal" tabindex="-1" role="dialog" aria-labelledby="errorsModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-theme">
+            <h5 class="modal-title text-white" >Error Preview</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ol id="errors_list">
+            </ol>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END MODAL -->
+    <script src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/semantic/dist/semantic.min.js"></script>
+    <script type="text/javascript" src="lib/sweetalerts/sweetalert.min.js"></script>
+    <script type="text/javascript" src="js/app.jsx"></script>
+    <script src="js/routing.jsx"></script>
+    <script src="js/account.jsx"></script>
+    <script src="js/ballots.jsx"></script>
+    <script src="js/errorHandler.jsx"></script>
+    <script>
+      $('.menu .item').tab();
+    </script>
+  </body>
+</html>

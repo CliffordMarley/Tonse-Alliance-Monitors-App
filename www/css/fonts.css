@@ -1,0 +1,29 @@
+@font-face{
+    font-family:"mali-reg";
+    src:url("../fonts/Mali/Mali-Regular.ttf");
+  }
+  @font-face{
+    font-family:"nuni-reg";
+    src:url("../fonts/Nunito/Nunito-Light.ttf");
+  }
+  @font-face{
+    font-family:"money";
+    src:url("../fonts/stripescaps-14446/Stripescaps-AEm7.ttf");
+  }
+  
+@font-face{
+    font-family:"electra";
+    src:url("../fonts/electr.ttf");
+  }
+  @font-face{
+    font-family:"era";
+    src:url("../fonts/eras.ttf");
+  }
+  @font-face{
+    font-family:"pacific";
+    src:url("../fonts/Pacifico/Pacifico-Regular.ttf");
+  }
+  @font-face{
+    font-family:"calisto";
+    src:url("../fonts/Calistoga/Calistoga-Regular.ttf");
+  }
