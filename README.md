@@ -1,0 +1,2 @@
+# Tonse-Alliance-Vote-Monitoring-App
+This is an application that i built for the Malawi's renowned Tonse Alliance Government which was used by over 5000 election monitors to relay captured voting data back to Tonse Alliance HQ. The entire frontend and backend system took me a total of 5 Days and UI was the least of my concerns considering that this was actually started the same 5 Days before Fresh Presidential elections. Unfortunately i will not be able to share the backend code. Have FUN!!!.
